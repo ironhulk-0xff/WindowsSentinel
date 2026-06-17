@@ -72,8 +72,8 @@ echo    WDAC Policy Deployment - WindowsSentinel v1
 echo ============================================================
 echo.
 echo    Author      : Ironhulk
-echo    Telegram    : @irohulk_0xff
-echo    X (Twitter) : @irohulk_0xff
+echo    Telegram    : @ironhulk_0xff
+echo    X (Twitter) : @ironhulk_0xff
 echo.
 echo ============================================================
 echo.
