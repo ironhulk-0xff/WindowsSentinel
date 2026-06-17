@@ -314,7 +314,7 @@ powershell -ExecutionPolicy Bypass -File C:\WDAC\Remove-WDAC.ps1
 
 Then reboot.
 
-### Option 2 — WinRE (if PowerShell is also denied or script is blocked)
+### Option 2: WinRE (if PowerShell is also denied or script is blocked)
 
 1. Boot into Windows Recovery Environment
 2. Open Command Prompt
@@ -343,9 +343,8 @@ Use `Deploy-WDAC.bat /report` to pull these automatically into a formatted repor
 
 If you encounter a bug, unexpected behavior, or have suggestions to improve WindowsSentinel, you can contact the developer directly:
 
-- Writer: Ironhulk  
-- Telegram: @irohulk_0xff  
-- X (Twitter): @irohulk_0xff  
+- Telegram:    @ironhulk_0xff  
+- X (Twitter): @ironhulk_0xff  
 
 Contributions, improvements, and security research feedback are welcome.
 
@@ -353,8 +352,6 @@ Contributions, improvements, and security research feedback are welcome.
 
 ## License
 
-MIT — use freely, modify as needed, contribute back improvements.
+Use freely, modify as needed.
 
 ---
-
-*Built as part of the WindowsSentinel security hardening platform.*
