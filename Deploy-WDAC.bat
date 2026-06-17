@@ -22,26 +22,6 @@ if %errorLevel% neq 0 (
     exit /b 1
 )
 
-echo.
-echo ============================================================
-echo IMPORTANT SECURITY NOTICE
-echo ============================================================
-echo.
-echo Some Antivirus (AV) and Endpoint Detection and Response (EDR)
-echo products may block, quarantine, or interfere with WDAC policy
-echo generation and deployment.
-echo.
-echo If you encounter errors during execution:
-echo   - Temporarily disable tamper protection if permitted.
-echo   - Add this script and C:\WDAC\ to your AV/EDR exclusions.
-echo   - Restore any files quarantined by your security software.
-echo.
-echo Supported AV/EDR products can be detected automatically later
-echo in the deployment process.
-echo.
-echo Press any key to continue...
-pause >nul
-
 :: Set console width for full-screen display
 mode con: cols=120 lines=50
 
@@ -113,8 +93,23 @@ echo   Recovery script : C:\WDAC\Remove-WDAC.ps1
 echo   Full help       : Deploy-WDAC.bat /help
 echo.
 echo ============================================================
+echo IMPORTANT SECURITY NOTICE
+echo ============================================================
 echo.
-
+echo Some Antivirus (AV) and Endpoint Detection and Response (EDR)
+echo products may block, quarantine, or interfere with WDAC policy
+echo generation and deployment.
+echo.
+echo If you encounter errors during execution:
+echo   - Temporarily disable tamper protection if permitted.
+echo   - Add this script and C:\WDAC\ to your AV/EDR exclusions.
+echo   - Restore any files quarantined by your security software.
+echo.
+echo Supported AV/EDR products can be detected automatically later
+echo in the deployment process.
+echo.
+echo ============================================================
+echo.
 if "!REMOVE_MODE!"=="1" goto DO_REMOVE
 if "!HARDEN_MODE!"=="1" goto DO_HARDEN
 if "!REPORT_ONLY!"=="1" goto GENERATE_REPORT
@@ -125,7 +120,7 @@ if "!ENFORCE_MODE!"=="1" goto DO_ENFORCE_ENTRY
 :: ============================================================
 echo [STEP 0] Checking existing WDAC policies on this machine...
 echo.
-echo Press Enter to Continue...
+echo Press enter to start or ctrl+c to exit...
 
 :: Call citool directly from batch - avoids stdin/stdout issues when
 :: calling from inside PowerShell. Output is written to a temp file.
@@ -223,9 +218,6 @@ if exist "%PF%" del "%PF%"
 powershell -ExecutionPolicy Bypass -File "%PF%"
 set PREFLIGHT_RESULT=%errorLevel%
 del "%PF%" >nul 2>&1
-echo.
-echo   Press any key to continue to setup...
-pause >nul
 echo.
 
 if "!PREFLIGHT_RESULT!"=="2" (
@@ -2044,6 +2036,7 @@ echo     /setup     Run the full setup wizard (first-time deployment)
 echo     /enforce   Switch the deployed policy to Enforce Mode
 echo     /report    Generate an audit report
 echo     /remove    Remove the deployed policy and reboot
+echo     /harden    Enforce policy + apply insider threat hardening
 echo     /help      Show full help including step-by-step descriptions
 echo.
 echo   Run Deploy-WDAC.bat /help for detailed information.
